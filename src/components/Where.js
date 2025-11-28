@@ -25,7 +25,7 @@ function Where () {
                 <i className='ti-location-pin'></i> Granja Sape - Rodovia MG 129, km 194 Carreiras, Ouro Branco - MG, 36420-000
               </p>
               <p>
-                <i className='ti-time'></i> <span>14:30am – 13:00pm</span>
+                <i className='ti-time'></i> <span>14:30 até 02:00</span>
               </p>
             </div>
           </div>

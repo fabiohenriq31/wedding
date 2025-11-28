@@ -11,8 +11,8 @@ function Gallery () {
       <div className='container'>
         <div className='row'>
           <div className='col-md-12 mb-30'>
-            <span className='oliven-title-meta'>Gallery</span>
-            <h2 className='oliven-title'>Our Memories</h2>
+            <span className='oliven-title-meta'>Galeria</span>
+            <h2 className='oliven-title'>Momentos</h2>
           </div>
         </div>
       </div>
