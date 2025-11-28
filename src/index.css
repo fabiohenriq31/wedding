@@ -1097,7 +1097,7 @@ body.slide .oliven-nav-toggle {
     font-size: 60px;
   }
   #countdown {
-    height: 40vh; 
+    height: 60vh; 
     background-position: 38%;
     background-repeat: no-repeat;
   }
@@ -1300,7 +1300,7 @@ img.img-fluid {
 }
 @media screen and (max-width: 768px) {
     #seeyou {
-        height: 40vh; 
+        height: 45vh; 
         background-position: center;
         background-repeat: no-repeat;
     }
