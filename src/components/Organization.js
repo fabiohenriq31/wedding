@@ -10,7 +10,7 @@ function Organization () {
         <h2 className='oliven-title'>Programação do Grande Dia</h2>
       </div>
     </div>
-    <div className='row bord-box bg-img' data-background='images/slider.jpg'>
+    <div id='photo-organization'className='row bord-box bg-img' data-background='images/slider.jpg'>
       <div className='col-md-3 item-box'>
         <h2 className='custom-font numb'>01</h2>
         <h6 className='title'>Cerimônia</h6>

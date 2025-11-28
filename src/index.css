@@ -846,7 +846,7 @@ body.slide .oliven-nav-toggle {
 }
 @media screen and (max-width: 991px) {
     .header {
-        background-position: center center;
+        background-position: 30%;
     }
     .header .caption h1 {
         font-size: 40px;
@@ -1096,10 +1096,15 @@ body.slide .oliven-nav-toggle {
   #countdown li span {
     font-size: 60px;
   }
+  #countdown {
+    height: 40vh; 
+    background-position: 38%;
+    background-repeat: no-repeat;
+  }
 }
 img.img-fluid {
-    width: 350px;   /* ajuste o tamanho */
-    height: 350px;  /* mesmo valor para ser quadrado */
+    width: 300px;   /* ajuste o tamanho */
+    height: 300=0px;  /* mesmo valor para ser quadrado */
     object-fit: cover;
     object-position: center;
     display: block;
@@ -1197,6 +1202,13 @@ img.img-fluid {
   overflow: hidden;
   background-image: url(./assets/images/slider.jpg);
 }
+@media screen and (max-width: 768px) {
+    #photo-organization {
+         
+        background-position: 35%;
+        background-repeat: no-repeat;
+    }
+}
 .organization .item-box {
   padding: 60px 30px;
   height: 100%;
@@ -1280,11 +1292,18 @@ img.img-fluid {
 }
 .seeyou .section-head h4 {
     position: relative;
-    color: #fff;
+    color: #fdfdfd;
     font-family: 'Alex Brush', cursive;
     font-weight: 400;
     font-size: 60px;
     margin-bottom: 0;
+}
+@media screen and (max-width: 768px) {
+    #seeyou {
+        height: 30vh; 
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 }
 
 
@@ -1311,11 +1330,12 @@ img.img-fluid {
     overflow: hidden;
     position: relative;
 }
-.gallery-box .gallery-img {
-    position: relative;
-    overflow: hidden;
-    border-radius: 0;
-    aspect-ratio: 1 / 1;
+.gallery-box .gallery-img > img {
+   width: 100%;
+  aspect-ratio: 4/3; 
+  overflow: hidden;
+  border-radius: 6px;
+  position: relative;;
 }
 .gallery-box .gallery-img:after {
     content: " ";
