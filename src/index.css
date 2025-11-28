@@ -1098,7 +1098,7 @@ body.slide .oliven-nav-toggle {
   }
   #countdown {
     height: 60svh; 
-    background-position: 38%;
+    background-position: cover;
     background-repeat: no-repeat;
   }
 }
