@@ -1300,7 +1300,7 @@ img.img-fluid {
 }
 @media screen and (max-width: 768px) {
     #seeyou {
-        height: 30vh; 
+        height: 40vh; 
         background-position: center;
         background-repeat: no-repeat;
     }
