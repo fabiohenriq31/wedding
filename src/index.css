@@ -813,7 +813,7 @@ body.slide .oliven-nav-toggle {
 
 /* ======= Header style ======= */
 .header {
-    min-height: 100vh;
+    min-height: 100svh;
     overflow: hidden;
 }
 .header .caption .o-hidden {
@@ -858,7 +858,7 @@ body.slide .oliven-nav-toggle {
 /* bounce */
 .header .arrow {
     position: relative;
-    top: 27vh;
+    top: 27svh;
     width: 100%;
     text-align: center;
     z-index: 8;
@@ -1097,7 +1097,7 @@ body.slide .oliven-nav-toggle {
     font-size: 60px;
   }
   #countdown {
-    height: 60vh; 
+    height: 60svh; 
     background-position: 38%;
     background-repeat: no-repeat;
   }
@@ -1300,7 +1300,7 @@ img.img-fluid {
 }
 @media screen and (max-width: 768px) {
     #seeyou {
-        height: 45vh; 
+        height: 45svh; 
         background-position: center;
         background-repeat: no-repeat;
     }
