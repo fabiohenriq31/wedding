@@ -28,15 +28,12 @@ function Bridegroom () {
                   </p>
                   <div className='social'>
                     <div className='full-width'>
-                      <a href="https://instagram.com/seuPerfil" 
+                      <a href="https://instagram.com/vazzbianca" 
                       target="_blank" rel="noopener noreferrer">
                       <FaInstagram />
                       </a>
-                      <a href="https://facebook.com/seuPerfil" target="_blank" rel="noopener noreferrer">
+                      <a href="https://facebook.com/biancavaz" target="_blank" rel="noopener noreferrer">
                         <FaFacebookF />
-                      </a>
-                      <a href="https://twitter.com/seuPerfil" target="_blank" rel="noopener noreferrer">
-                        <FaTwitter />
                       </a>
                     </div>
                   </div>
@@ -65,15 +62,15 @@ function Bridegroom () {
                   </p>
                   <div className='social'>
                     <div className='full-width'>
-                      <a href="https://instagram.com/seuPerfil" 
+                      <a href="https://instagram.com/binhohenriq" 
                       target="_blank" rel="noopener noreferrer">
                       <FaInstagram />
                       </a>
-                      <a href="https://facebook.com/seuPerfil" 
+                      <a href="https://facebook.com/" 
                       target="_blank" rel="noopener noreferrer">
                       <FaFacebookF />
                       </a>
-                      <a href="https://twitter.com/seuPerfil" 
+                      <a href="https://twitter.com/binhohenriq" 
                       target="_blank" rel="noopener noreferrer">
                       <FaTwitter />
                       </a>
