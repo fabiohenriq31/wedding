@@ -47,6 +47,9 @@ function Sidebar () {
             <li>
               <a href='#rsvp'>Confirme sua Presença</a>
             </li>
+            <li>
+              <a href='/shopping'>Lista de Presentes</a>
+            </li>
           </ul>
         </nav>
         <div className='footer1'>
