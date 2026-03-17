@@ -48,7 +48,7 @@ function Sidebar () {
               <a href='#rsvp'>Confirme sua Presença</a>
             </li>
             <li>
-              <a href='/shopping'>Lista de Presentes</a>
+              <a href='https://www.shoppingbiancaefabio.com.br/shopping'>Lista de Presentes</a>
             </li>
           </ul>
         </nav>
