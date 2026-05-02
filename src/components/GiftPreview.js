@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 
 const shopUrl = 'https://www.shoppingbiancaefabio.com.br/shopping/products'
-const apiUrl = process.env.REACT_APP_SHOP_API_URL || 'http://api.biancaefabio.com.br'
+const apiUrl = process.env.REACT_APP_SHOP_API_URL || 'https://biancaefabio-wedding-shop.onrender.com'
 
 function formatCurrency (value) {
   return new Intl.NumberFormat('pt-BR', {
