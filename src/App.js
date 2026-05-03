@@ -10,8 +10,13 @@ import Seeyou from './components/Seeyou';
 import Sidebar from './components/Sidebar';
 import Story from './components/Story';
 import Where from './components/Where';
+import GuestPhotosPage from './pages/GuestPhotosPage';
 
 function App() {
+  if (window.location.pathname === '/fotos') {
+    return <GuestPhotosPage />;
+  }
+
   return (
     <>
       <Sidebar />

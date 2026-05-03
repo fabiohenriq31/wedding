@@ -45,6 +45,9 @@ function Sidebar () {
               <a href='#gallery'>Galeria</a>
             </li>
             <li>
+              <a href='/fotos'>Fotos dos Convidados</a>
+            </li>
+            <li>
               <a href='#whenwhere'>Quando & Onde</a>
             </li>
             <li>

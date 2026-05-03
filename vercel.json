@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/shopping-api/:path*",
+      "destination": "https://biancaefabio-wedding-shop.onrender.com/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://biancaefabio-wedding-shop.onrender.com/api/:path*"
+    },
+    {
+      "source": "/fotos",
+      "destination": "/index.html"
+    }
+  ]
+}
