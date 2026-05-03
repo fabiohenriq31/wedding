@@ -45,9 +45,6 @@ function Sidebar () {
               <a href='#gallery'>Galeria</a>
             </li>
             <li>
-              <a href='/fotos'>Fotos dos Convidados</a>
-            </li>
-            <li>
               <a href='#whenwhere'>Quando & Onde</a>
             </li>
             <li>
@@ -55,6 +52,9 @@ function Sidebar () {
             </li>
             <li>
               <a href='https://www.shoppingbiancaefabio.com.br/shopping/products'>Lista de Presentes</a>
+            </li>
+            <li>
+              <a href='/fotos'>Fotos dos Convidados</a>
             </li>
           </ul>
         </nav>

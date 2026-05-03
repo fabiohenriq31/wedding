@@ -1,27 +1,39 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import emailjs from '@emailjs/browser'
+import { saveRsvp } from '../services/rsvpApi'
 
 const serviceId = process.env.REACT_APP_SERVICE_ID
 const templateID = process.env.REACT_APP_TEMPLATE_ID
 const publicKey = process.env.REACT_APP_PUBLIC_KEY
 
 function RSVP () {
-  const form = useRef();
+  const form = useRef()
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault()
 
-    emailjs.sendForm(serviceId, templateID, form.current, publicKey ).then(
-      () => {
-        alert("Confirmação enviada com sucesso!")
-        form.current.reset()
-      },
-      (error) => {
-        alert("Falha ao enviar sua confirmação de presença, tente novamente mais tarde.", error.text);
+    const formData = new FormData(form.current)
+    const payload = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      companions: formData.get('companions'),
+      message: formData.get('message')
+    }
 
-      }
-    )
+    try {
+      await Promise.all([
+        emailjs.sendForm(serviceId, templateID, form.current, publicKey),
+        saveRsvp(payload)
+      ])
+
+      alert('Confirmação enviada com sucesso!')
+      form.current.reset()
+    } catch (error) {
+      alert('Falha ao enviar sua confirmação de presença, tente novamente mais tarde.')
+      console.error(error)
+    }
   }
+
   return (
     <div
       id='rsvp'
@@ -48,11 +60,12 @@ function RSVP () {
               </div>
               <div className='col-md-12'>
                 <div className='form-group'>
-                  <input 
-                  type='text' 
-                  name='email'
-                  className='form-control' 
-                  placeholder='Email' />{' '}
+                  <input
+                    type='text'
+                    name='email'
+                    className='form-control'
+                    placeholder='Email'
+                  />{' '}
                 </div>
               </div>
               <div className='col-md-12'>
@@ -79,11 +92,11 @@ function RSVP () {
               </div>
               <div className='col-md-12'>
                 <div className='form-group'>
-                  <input 
-                  type='submit' 
-                  className='btn buttono' 
-                  value='SEND' 
-                   />{' '}
+                  <input
+                    type='submit'
+                    className='btn buttono'
+                    value='CONFIRMAR'
+                  />{' '}
                 </div>
               </div>
             </form>
