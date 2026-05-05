@@ -27,28 +27,28 @@ function Sidebar () {
         <nav className='oliven-main-menu'>
           <ul>
             <li>
-              <a href='#home'>Início</a>
+              <a href='/#home'>Início</a>
             </li>
             <li>
-              <a href='#couple'>Os Noivos</a>
+              <a href='/#couple'>Os Noivos</a>
             </li>
             <li>
-              <a href='#story'>Nossa História</a>
+              <a href='/#story'>Nossa História</a>
             </li>
             <li>
-              <a href='#organization'>Programação</a>
+              <a href='/#organization'>Programação</a>
             </li>
             <li>
-              <a href='#gifts'>Presentes</a>
+              <a href='/#gifts'>Presentes</a>
             </li>
             <li>
-              <a href='#gallery'>Galeria</a>
+              <a href='/#gallery'>Galeria</a>
             </li>
             <li>
-              <a href='#whenwhere'>Quando & Onde</a>
+              <a href='/#whenwhere'>Quando & Onde</a>
             </li>
             <li>
-              <a href='#rsvp'>Confirme sua Presença</a>
+              <a href='/#rsvp'>Confirme sua Presença</a>
             </li>
             <li>
               <a href='https://www.shoppingbiancaefabio.com.br/shopping/products'>Lista de Presentes</a>
