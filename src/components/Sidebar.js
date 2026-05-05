@@ -36,10 +36,10 @@ function Sidebar () {
               <a href='/#story'>Nossa História</a>
             </li>
             <li>
-              <a href='/#organization'>Programação</a>
+              <a href='/#gifts'>Presentes</a>
             </li>
             <li>
-              <a href='/#gifts'>Presentes</a>
+              <a href='/#organization'>Programação</a>
             </li>
             <li>
               <a href='/#gallery'>Galeria</a>
@@ -49,9 +49,6 @@ function Sidebar () {
             </li>
             <li>
               <a href='/#rsvp'>Confirme sua Presença</a>
-            </li>
-            <li>
-              <a href='https://www.shoppingbiancaefabio.com.br/shopping/products'>Lista de Presentes</a>
             </li>
             <li>
               <a href='/fotos'>Fotos dos Convidados</a>
