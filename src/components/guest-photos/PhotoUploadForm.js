@@ -4,9 +4,28 @@ import { uploadGuestPhoto } from '../../services/guestPhotosApi'
 function PhotoUploadForm ({ onUploaded }) {
   const [guestName, setGuestName] = useState('')
   const [photo, setPhoto] = useState(null)
+  const [previewUrl, setPreviewUrl] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
+
+  function handlePhotoChange (event) {
+    const selectedPhoto = event.target.files?.[0] || null
+
+    setError('')
+    setMessage('')
+    setPhoto(selectedPhoto)
+
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl)
+    }
+
+    if (selectedPhoto) {
+      setPreviewUrl(URL.createObjectURL(selectedPhoto))
+    } else {
+      setPreviewUrl('')
+    }
+  }
 
   async function handleSubmit (event) {
     event.preventDefault()
@@ -22,13 +41,15 @@ function PhotoUploadForm ({ onUploaded }) {
 
     try {
       const data = await uploadGuestPhoto({ photo, guestName })
-      setMessage(data?.message || 'Sua foto já apareceu no mural! 💙')
+
+      setMessage(data?.message || 'Sua foto foi enviada com carinho! ♡')
       setGuestName('')
       setPhoto(null)
+      setPreviewUrl('')
       event.currentTarget.reset()
       onUploaded()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Nao foi possivel enviar a foto.')
+      setError(err instanceof Error ? err.message : 'Não foi possível enviar a foto.')
     } finally {
       setIsSubmitting(false)
     }
@@ -36,8 +57,9 @@ function PhotoUploadForm ({ onUploaded }) {
 
   return (
     <form className='guest-photo-upload' onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor='guestName'>Seu nome (opcional)</label>
+      <div className='guest-photo-field'>
+        <label htmlFor='guestName'>Seu nome <span>(opcional)</span></label>
+
         <input
           id='guestName'
           type='text'
@@ -48,15 +70,33 @@ function PhotoUploadForm ({ onUploaded }) {
         />
       </div>
 
-      <div>
-        <label htmlFor='photo'>Foto</label>
-        <input
-          id='photo'
-          type='file'
-          accept='image/jpeg,image/jpg,image/png,image/webp,image/heic,image/heif'
-          capture='environment'
-          onChange={(event) => setPhoto(event.target.files?.[0] || null)}
-        />
+      <div className='guest-photo-field'>
+        <label htmlFor='photo'>Sua foto</label>
+
+        <label className={`guest-photo-file ${previewUrl ? 'has-preview' : ''}`} htmlFor='photo'>
+          <input
+            id='photo'
+            type='file'
+            accept='image/jpeg,image/jpg,image/png,image/webp,image/heic,image/heif'
+            capture='environment'
+            onChange={handlePhotoChange}
+          />
+
+          {!previewUrl && (
+            <div className='guest-photo-file__content'>
+              <span className='guest-photo-file__icon'>📸</span>
+              <strong>Clique para escolher ou tirar uma foto</strong>
+              <small>JPG, PNG, WEBP ou HEIC</small>
+            </div>
+          )}
+
+          {previewUrl && (
+            <div className='guest-photo-preview'>
+              <img src={previewUrl} alt='Prévia da foto escolhida' />
+              <span>Trocar foto</span>
+            </div>
+          )}
+        </label>
       </div>
 
       <button type='submit' disabled={isSubmitting}>
