@@ -284,6 +284,15 @@ input[type=radio]:checked:before {
 .mb-15 {
     margin-bottom: 15px;
 }
+.rsvp-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+}
+.rsvp-checkbox input[type=checkbox] {
+    margin: 0 6px 0 0;
+}
 
 .form-control {
     -webkit-appearance: none;

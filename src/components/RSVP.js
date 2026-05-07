@@ -17,7 +17,8 @@ function RSVP () {
       name: formData.get('name'),
       email: formData.get('email'),
       companions: formData.get('companions'),
-      message: formData.get('message')
+      message: formData.get('message'),
+      isChild: formData.get('isChild') === 'on'
     }
 
     try {
@@ -76,6 +77,17 @@ function RSVP () {
                     className='form-control'
                     placeholder='Quem vai com você?'
                   />{' '}
+                </div>
+              </div>
+              <div className='col-md-12'>
+                <div className='form-group rsvp-checkbox'>
+                  <label>
+                    <input
+                      type='checkbox'
+                      name='isChild'
+                    />
+                    Criança até 12 anos
+                  </label>
                 </div>
               </div>
               <div className='col-md-12'>
