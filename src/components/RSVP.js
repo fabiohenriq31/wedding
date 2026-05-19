@@ -81,13 +81,6 @@ function RSVP () {
               </div>
               <div className='col-md-12'>
                 <div className='form-group rsvp-checkbox'>
-                  <label>
-                    <input
-                      type='checkbox'
-                      name='isChild'
-                    />
-                    Criança até 12 anos
-                  </label>
                 </div>
               </div>
               <div className='col-md-12'>
