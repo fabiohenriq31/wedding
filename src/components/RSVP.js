@@ -16,6 +16,7 @@ function RSVP () {
     const payload = {
       name: formData.get('name'),
       email: formData.get('email'),
+      phone: formData.get('phone'),
       companions: formData.get('companions'),
       message: formData.get('message'),
       isChild: formData.get('isChild') === 'on'
@@ -66,6 +67,16 @@ function RSVP () {
                     name='email'
                     className='form-control'
                     placeholder='Email'
+                  />{' '}
+                </div>
+              </div>
+              <div className='col-md-12'>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    name='phone'
+                    className='form-control'
+                    placeholder='Telefone'
                   />{' '}
                 </div>
               </div>
