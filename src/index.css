@@ -294,6 +294,72 @@ input[type=radio]:checked:before {
     margin: 0 6px 0 0;
 }
 
+.rsvp-lookup {
+    position: relative;
+}
+
+.rsvp-lookup__menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% - 12px);
+    z-index: 20;
+    border: 1px solid #ececec;
+    background: #fff;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.rsvp-lookup__item {
+    width: 100%;
+    border: 0;
+    background: #fff;
+    color: #000;
+    text-align: left;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 15px;
+}
+
+.rsvp-lookup__item:hover {
+    background: #faf8f7;
+}
+
+.rsvp-lookup__item span {
+    font-size: 12px;
+    color: #888;
+}
+
+.rsvp-selected {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.rsvp-selected__chip {
+    border: 1px solid rgba(189, 148, 90, 0.45);
+    background: #faf8f7;
+    color: #000;
+    padding: 10px 14px;
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rsvp-selected__chip span {
+    color: #BD945A;
+    font-weight: 700;
+}
+
 .form-control {
     -webkit-appearance: none;
     -moz-appearance: none;
