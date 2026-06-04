@@ -360,6 +360,26 @@ input[type=radio]:checked:before {
     font-weight: 700;
 }
 
+.rsvp-feedback {
+    border: 1px solid transparent;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.rsvp-feedback--error {
+    background: #fff4f4;
+    border-color: #efc5c5;
+    color: #a33a3a;
+}
+
+.rsvp-feedback--success {
+    background: #f5fbf7;
+    border-color: #cfe7d7;
+    color: #2d6a45;
+}
+
 .form-control {
     -webkit-appearance: none;
     -moz-appearance: none;

@@ -17,6 +17,8 @@ function RSVP () {
   const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
   const [sending, setSending] = useState(false)
+  const [formError, setFormError] = useState('')
+  const [formSuccess, setFormSuccess] = useState('')
 
   const selectedIds = useMemo(() => {
     return new Set([
@@ -33,15 +35,19 @@ function RSVP () {
 
     try {
       const results = await searchRsvpGuests(query)
+      setFormError('')
       setter(results.filter((guest) => !currentIds.has(guest._id)))
     } catch (error) {
       console.error(error)
+      setFormError(error instanceof Error ? error.message : 'Nao foi possivel buscar convidados.')
       setter([])
     }
   }
 
   async function onGuestInputChange (event) {
     const value = event.target.value
+    setFormError('')
+    setFormSuccess('')
     setNameQuery(value)
     setSelectedGuest(null)
     await handleGuestSearch(value, setGuestSuggestions)
@@ -49,13 +55,22 @@ function RSVP () {
 
   async function onCompanionInputChange (event) {
     const value = event.target.value
+    setFormError('')
+    setFormSuccess('')
     setCompanionQuery(value)
     await handleGuestSearch(value, setCompanionSuggestions, selectedIds)
   }
 
   function selectGuest (guest) {
     setSelectedGuest(guest)
-    setNameQuery(guest.name)
+    setNameQuery('')
+    setGuestSuggestions([])
+    setFormError('')
+  }
+
+  function removeSelectedGuest () {
+    setSelectedGuest(null)
+    setNameQuery('')
     setGuestSuggestions([])
   }
 
@@ -71,9 +86,20 @@ function RSVP () {
 
   async function sendEmailAndRsvp (event) {
     event.preventDefault()
+    setFormError('')
+    setFormSuccess('')
 
     if (!selectedGuest) {
-      alert('Selecione seu nome a partir da lista de convidados.')
+      const errorMessage = 'Selecione seu nome a partir da lista de convidados.'
+      setFormError(errorMessage)
+      alert(errorMessage)
+      return
+    }
+
+    if (!message.trim()) {
+      const errorMessage = 'A mensagem e obrigatoria.'
+      setFormError(errorMessage)
+      alert(errorMessage)
       return
     }
 
@@ -89,18 +115,26 @@ function RSVP () {
     }
 
     try {
-      await Promise.all([
-        emailjs.send(serviceId, templateID, {
+      await saveRsvp(payload)
+
+      let emailWarning = ''
+
+      try {
+        await emailjs.send(serviceId, templateID, {
           name: selectedGuest.name,
           email,
           phone,
           companions: companionNames,
           message
-        }, publicKey),
-        saveRsvp(payload)
-      ])
+        }, publicKey)
+      } catch (emailError) {
+        console.error(emailError)
+        emailWarning = ' Sua presenca foi confirmada, mas nao conseguimos enviar o aviso por e-mail.'
+      }
 
-      alert('Confirmacao enviada com sucesso!')
+      const successMessage = `Confirmacao enviada com sucesso!${emailWarning}`
+      setFormSuccess(successMessage)
+      alert(successMessage)
       setNameQuery('')
       setSelectedGuest(null)
       setGuestSuggestions([])
@@ -111,7 +145,9 @@ function RSVP () {
       setPhone('')
       setMessage('')
     } catch (error) {
-      alert(error instanceof Error ? error.message : 'Falha ao enviar sua confirmacao de presenca.')
+      const errorMessage = error instanceof Error ? error.message : 'Falha ao enviar sua confirmacao de presenca.'
+      setFormError(errorMessage)
+      alert(errorMessage)
       console.error(error)
     } finally {
       setSending(false)
@@ -127,9 +163,28 @@ function RSVP () {
             <h2 className='oliven-title text-center'>Confirme sua presenca</h2>
             <br />
             <form onSubmit={sendEmailAndRsvp} method='post' className='row'>
+              {formError && (
+                <div className='col-md-12'>
+                  <div className='rsvp-feedback rsvp-feedback--error'>{formError}</div>
+                </div>
+              )}
+
+              {formSuccess && (
+                <div className='col-md-12'>
+                  <div className='rsvp-feedback rsvp-feedback--success'>{formSuccess}</div>
+                </div>
+              )}
+
               <div className='col-md-12'>
                 <div className='form-group rsvp-lookup'>
-                  <input type='text' name='name' className='form-control' placeholder='Digite seu nome' value={nameQuery} onChange={onGuestInputChange} autoComplete='off' required />
+                  {selectedGuest && (
+                    <div className='rsvp-selected'>
+                      <button type='button' className='rsvp-selected__chip' onClick={removeSelectedGuest}>
+                        {selectedGuest.name} <span>x</span>
+                      </button>
+                    </div>
+                  )}
+                  <input type='text' name='name' className='form-control' placeholder='Digite seu nome e selecione na lista' value={nameQuery} onChange={onGuestInputChange} autoComplete='off' required={!selectedGuest} />
                   {guestSuggestions.length > 0 && (
                     <div className='rsvp-lookup__menu'>
                       {guestSuggestions.map((guest) => (
@@ -185,7 +240,7 @@ function RSVP () {
 
               <div className='col-md-12'>
                 <div className='form-group'>
-                  <textarea name='message' id='message' cols='30' rows='7' className='form-control' placeholder='Mensagem' value={message} onChange={(event) => setMessage(event.target.value)}></textarea>
+                  <textarea name='message' id='message' cols='30' rows='7' className='form-control' placeholder='Mensagem obrigatoria' value={message} onChange={(event) => setMessage(event.target.value)} required></textarea>
                 </div>
               </div>
 
