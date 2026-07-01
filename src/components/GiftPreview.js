@@ -10,6 +10,23 @@ function formatCurrency (value) {
   }).format(value || 0)
 }
 
+function GiftPreviewImage ({ product }) {
+  const [hasError, setHasError] = useState(false)
+
+  if (!product.imageUrl || hasError) {
+    return <span className='gift-preview__image-placeholder'>Presente</span>
+  }
+
+  return (
+    <img
+      src={product.imageUrl}
+      alt={product.name}
+      onError={() => setHasError(true)}
+      loading='lazy'
+    />
+  )
+}
+
 function GiftPreview () {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -89,11 +106,7 @@ function GiftPreview () {
               <div className='col-6 col-lg-3' key={product.id || product._id || product.slug || product.name}>
                 <a className='gift-preview__card' href={shopUrl}>
                   <span className='gift-preview__image'>
-                    {product.imageUrl ? (
-                      <img src={product.imageUrl} alt={product.name} />
-                    ) : (
-                      <span className='gift-preview__image-placeholder'>Presente</span>
-                    )}
+                    <GiftPreviewImage product={product} />
                   </span>
                   <span className='gift-preview__content'>
                     <span className='gift-preview__name'>{product.name}</span>

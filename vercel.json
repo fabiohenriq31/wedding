@@ -11,6 +11,10 @@
     {
       "source": "/fotos",
       "destination": "/index.html"
+    },
+    {
+      "source": "/social",
+      "destination": "/index.html"
     }
   ]
 }

@@ -53,6 +53,9 @@ function Sidebar () {
             <li>
               <a href='/fotos'>Fotos dos Convidados</a>
             </li>
+            <li>
+              <a href='/social'>B&amp;F Social</a>
+            </li>
           </ul>
         </nav>
         <div className='footer1'>

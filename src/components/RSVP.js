@@ -63,7 +63,7 @@ function RSVP () {
 
   function selectGuest (guest) {
     setSelectedGuest(guest)
-    setNameQuery('')
+    setNameQuery(guest.name)
     setGuestSuggestions([])
     setFormError('')
   }
@@ -176,15 +176,13 @@ function RSVP () {
               )}
 
               <div className='col-md-12'>
-                <div className='form-group rsvp-lookup'>
+                <div className={`form-group rsvp-lookup ${selectedGuest ? 'rsvp-lookup--selected' : ''}`}>
+                  <input type='text' name='name' className='form-control' placeholder='Digite seu nome e selecione na lista' value={nameQuery} onChange={onGuestInputChange} autoComplete='off' readOnly={!!selectedGuest} required={!selectedGuest} />
                   {selectedGuest && (
-                    <div className='rsvp-selected'>
-                      <button type='button' className='rsvp-selected__chip' onClick={removeSelectedGuest}>
-                        {selectedGuest.name} <span>x</span>
-                      </button>
-                    </div>
+                    <button type='button' className='rsvp-lookup__clear' onClick={removeSelectedGuest} aria-label='Trocar convidado'>
+                      x
+                    </button>
                   )}
-                  <input type='text' name='name' className='form-control' placeholder='Digite seu nome e selecione na lista' value={nameQuery} onChange={onGuestInputChange} autoComplete='off' required={!selectedGuest} />
                   {guestSuggestions.length > 0 && (
                     <div className='rsvp-lookup__menu'>
                       {guestSuggestions.map((guest) => (
@@ -195,18 +193,6 @@ function RSVP () {
                       ))}
                     </div>
                   )}
-                </div>
-              </div>
-
-              <div className='col-md-12'>
-                <div className='form-group'>
-                  <input type='text' name='email' className='form-control' placeholder='Email' value={email} onChange={(event) => setEmail(event.target.value)} />
-                </div>
-              </div>
-
-              <div className='col-md-12'>
-                <div className='form-group'>
-                  <input type='text' name='phone' className='form-control' placeholder='Telefone' value={phone} onChange={(event) => setPhone(event.target.value)} />
                 </div>
               </div>
 
@@ -237,6 +223,18 @@ function RSVP () {
                   </div>
                 </div>
               )}
+
+              <div className='col-md-12'>
+                <div className='form-group'>
+                  <input type='text' name='email' className='form-control' placeholder='Email' value={email} onChange={(event) => setEmail(event.target.value)} />
+                </div>
+              </div>
+
+              <div className='col-md-12'>
+                <div className='form-group'>
+                  <input type='text' name='phone' className='form-control' placeholder='Telefone' value={phone} onChange={(event) => setPhone(event.target.value)} />
+                </div>
+              </div>
 
               <div className='col-md-12'>
                 <div className='form-group'>
